@@ -12,7 +12,7 @@
                 html: "HERM (Hermetic Token) adota um Padrão de Token do Ethereum chamado ERC-20. <br /><br /> Ele é o ativo bonificado para todos os usuários elegíveis atráves do Karma e pode ser transferido para outras carteiras (não recomendado) como MetaTask, por exemplo."
             },
             image: {
-                url: "https://i.imgur.com/Gh9ovZn.png",
+                url: "./images/hermetic-token.png",
                 alt: "Block Chain"
             },
             link: {
@@ -27,7 +27,7 @@
                 html: "Karma é a aplicação responsável por criar, validar e armazenar as informações dos votos de uma forma descentralizada através da tecnologia de Block Latter. <br /><br /> E usa o Lightning-Peer-Network (para P2P) afim de evitar a centralização das informações e para garantir a transparência da Rede Hermetic."
             },
             image: {
-                url: "https://i.imgur.com/2aNL0vs.png",
+                url: "./images/karma-api.png",
                 alt: "Scales of Justice"
             },
             link: {
@@ -42,7 +42,7 @@
                 html: "Linghtning Peer Network é uma biblioteca mantida pelo Hermetic Network para conexões em pares, ela é usada no Karma API e é usada para garantir a descentralização dos blocos de votação da Block Latter."
             },
             image: {
-                url: "https://i.imgur.com/kXElCQv.png",
+                url: "./images/peer-network.png",
                 alt: "Peer Network"
             },
             link: {

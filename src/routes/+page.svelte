@@ -11,6 +11,10 @@
     import "../style/reset.css";
 </script>
 
+<svelte:head>
+	<title>Hermetic Network - Proof of Generosity Concept</title>
+</svelte:head>
+
 <div id="page">
     <Navigation />
     <Hero />
