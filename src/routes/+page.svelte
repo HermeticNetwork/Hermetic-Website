@@ -5,6 +5,8 @@
     import Hr from "../components/Hr.svelte";
     import SectionNetwork from "../components/SectionNetwork.svelte";
     import Contribute from "../components/Contribute.svelte";
+    import Articles from "../components/Articles.svelte";
+    import Newsletter from "../components/Newsletter.svelte";
     import Footer from "../components/Footer.svelte";
     
     import "../style/global.css";
@@ -22,5 +24,7 @@
     <Hr />
     <SectionNetwork />
     <Contribute />
+    <Articles />
+    <Newsletter />
     <Footer />
 </div>
