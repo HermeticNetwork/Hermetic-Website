@@ -9,10 +9,10 @@
         {
             title: "Hermetic (HERM)",
             content: {
-                html: "HERM (Hermetic Token) adota um Padrão de Token do Ethereum chamado ERC-777. <br /><br /> Ele é o ativo bonificado para todos os usuários elegíveis atráves do Karma e pode ser transferido para outras carteiras (não recomendado) como MetaTask, por exemplo."
+                html: "HERM (Hermetic Token) adota um Padrão de Token do Ethereum chamado ERC-20. <br /><br /> Ele é o ativo bonificado para todos os usuários elegíveis atráves do Karma e pode ser transferido para outras carteiras (não recomendado) como MetaTask, por exemplo."
             },
             image: {
-                url: "https://www.datamex.com.br/blog/wp-content/uploads/2019/09/blockchain-na-logistica-e-transporte.jpg",
+                url: "https://i.imgur.com/Gh9ovZn.png",
                 alt: "Block Chain"
             },
             link: {
@@ -27,7 +27,7 @@
                 html: "Karma é a aplicação responsável por criar, validar e armazenar as informações dos votos de uma forma descentralizada através da tecnologia de Block Latter. <br /><br /> E usa o Lightning-Peer-Network (para P2P) afim de evitar a centralização das informações e para garantir a transparência da Rede Hermetic."
             },
             image: {
-                url: "https://moderncourts.org/wp-content/uploads/2013/10/scales-of-justice-trans.png",
+                url: "https://i.imgur.com/2aNL0vs.png",
                 alt: "Scales of Justice"
             },
             link: {
@@ -42,7 +42,7 @@
                 html: "Linghtning Peer Network é uma biblioteca mantida pelo Hermetic Network para conexões em pares, ela é usada no Karma API e é usada para garantir a descentralização dos blocos de votação da Block Latter."
             },
             image: {
-                url: "https://techterms.com/img/xl/p2p_442.png",
+                url: "https://i.imgur.com/kXElCQv.png",
                 alt: "Peer Network"
             },
             link: {
@@ -102,7 +102,8 @@
         }
     }
     .teaser img {
-        width: 100%;
+        width: 55%;
+        margin: auto;
         border-radius: var(--border-radius);
     }
     .teaser .body {

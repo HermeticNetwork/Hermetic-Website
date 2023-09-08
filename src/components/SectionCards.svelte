@@ -87,7 +87,7 @@
             icon: "material-symbols:paid-outline",
             title: "ERC-20",
             content: {
-                html: "HERM é um Token que opera na Rede Ethereum e adere aos padrões da rede, garantindo confiabilidade e segurança.",
+                html: "HERM é um Token que opera na Rede Ethereum e adere os seus padrões, garantindo confiabilidade e segurança.",
             },
             link: {
                 label: "ERC-20 Token Standard",
