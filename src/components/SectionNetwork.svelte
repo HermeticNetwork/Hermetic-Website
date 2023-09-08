@@ -37,6 +37,21 @@
         },
         
         {
+            title: "Hermetic Wallet (Client)",
+            content: {
+                html: "Apesar do nome, as Wallets não possuem de fato suas HERMs, ela possuí o acesso as suas moedas diretamente no Blockchain, te dando total acesso para gerenciar-las efetuando transações. A Hermertic Wallet conta além disso, com a parte de Cliente para o Karma API, que é usado para validar a o pagamento de novas HERMs através da Prova de Generosidade."
+            },
+            image: {
+                url: "./images/hermetic-wallet.png",
+                alt: "Hermetic Wallet"
+            },
+            link: {
+                url: "https://github.com/HermeticNetwork/Hermetic-Wallet",
+                label: "Veja o fonte"
+            }
+        },
+        
+        {
             title: "Peer to Peer (Library)",
             content: {
                 html: "Linghtning Peer Network é uma biblioteca mantida pelo Hermetic Network para conexões em pares, ela é usada no Karma API e é usada para garantir a descentralização dos blocos de votação da Block Latter."
