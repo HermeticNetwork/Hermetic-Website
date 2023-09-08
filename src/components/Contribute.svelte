@@ -27,6 +27,8 @@ Entre no nosso <a href="https://discord.gg/UzFGhQ6q">Discord</a>.
     <div class="content">
         {@html content.html}
     </div>
+    
+    <div id="articles" />
 </section>
 
 <style>

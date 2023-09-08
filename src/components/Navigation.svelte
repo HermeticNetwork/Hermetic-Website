@@ -31,13 +31,26 @@
         {
             link: {
                 url: "#contribution",
-                label: "Contribuição",
+                label: "Contribuições",
+            },
+        },
+        {
+            link: {
+                url: "#articles",
+                label: "Artigos e Incentivos",
             },
         },
         {
             link: {
                 url: "https://discord.gg/UzFGhQ6q",
-                label: "Discord",
+                label: "Participe",
+                target: "_blank"
+            },
+        },
+        {
+            link: {
+                url: "https://github.com/orgs/HermeticNetwork/repositories",
+                label: "Repositórios",
                 target: "_blank"
             },
         },
