@@ -1,134 +1,85 @@
 <script>
     import Icon from "@iconify/svelte";
 
-    export let heading = "Estamos avançando rapidamente, inscreva-se para atualizações e muito mais.";
-    export let form = {
-        placeholder: "johndoe@hermetic.co",
-        button_label: "Confirmar",
-        footer: "Enviaremos um e-mail toda vez que uma implementação relevante ocorrer.",
-    };
-
-    export let cards = [
+    export let social_links = [
         {
-            icon: "mdi:heart",
-            title: "100% Humanizado",
-            description: "A Rede Hermetic foi construída para impactar vidas de forma positiva, este é o principal motivo pelo qual o HERM existe.",
+            link: {
+                url: "https://discord.gg/UzFGhQ6q",
+                label: "Discord",
+            },
+            icon: "mdi:discord",
         },
         {
-            icon: "material-symbols:lock",
-            title: "Rápido, Fácil e Seguro",
-            description: "Projetado para ser leve e fácil de usar, a Rede Hermetic funciona em diversas camadas e integra diversas aplicações.",
-        }
+            link: {
+                url: "https://github.com/HermeticNetwork",
+                label: "Github",
+            },
+            icon: "mdi:github",
+        },
     ];
 
-    const noNewsletterAlert = () => alert("Oops! Nós não temos uma Newsletter ainda... Tente o Discord!")
+    // Don't touch!
+    export let copyright = "John 15:5";
 </script>
 
-<svg viewBox="0 0 1440 175" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M1440 175H0V0C240 53.3333 480 80 720 80C960 80 1200 53.3333 1440 0V175Z"
-    />
-</svg>
-<section>
+<footer>
+    
     <div class="section-container">
-        <div class="signup">
-            <h2 class="heading">{heading}</h2>
-            <form action="">
-                <input type="email" placeholder={form.placeholder} />
-                <button type="button" on:click={noNewsletterAlert}>{form.button_label}</button>
-            </form>
-            <span class="footer">{form.footer}</span>
-        </div>
-        <div class="cards">
-            {#each cards as { icon, title, description }}
-                <div class="card">
-                    <div class="icon">
-                        <Icon {icon} />
-                    </div>
-                    <span class="title">{title}</span>
-                    <span class="description">{description}</span>
-                </div>
-            {/each}
+        <hr />
+        <div class="footer">
+            <!-- Don't touch! -->
+            <span class="copyright">{ copyright }</span>
+            <span class="by">Developed for Humanity.</span>
+            <ul>
+                {#each social_links as { link, icon }}
+                    <li>
+                        <a href={link.url} aria-label={icon}><Icon {icon} /></a>
+                    </li>
+                {/each}
+            </ul>
         </div>
     </div>
-</section>
+</footer>
 
 <style>
-    svg path {
-        fill: var(--color-accent-2);
-    }
-    section {
-        background: var(--color-accent-2);
-    }
+    /* Defined in Site CSS */
     .section-container {
-        display: grid;
-        gap: 3rem;
-        padding-top: 1rem;
+        padding: 2rem 2rem 1rem 2rem;
     }
-    @media (min-width: 900px) {
-        .section-container {
-            gap: 7rem;
-            grid-template-columns: 1fr 1fr;
-        }
+    hr {
+        border-color: #f2f2f2;
     }
-    .signup {
-        color: var(--color-inverted);
-        display: grid;
-        gap: 1rem;
-        place-content: start;
-    }
-    .signup form {
+    .footer {
         display: flex;
-        gap: 0.5rem;
-    }
-    .signup form input {
-        color: var(--color-base);
-    }
-    .signup form input,
-    .signup form button {
-        font-size: 1rem;
-        padding: 0.75rem 1rem;
-        border-radius: calc(var(--border-radius) / 2);
-    }
-    .signup form button {
-        background: var(--color-brand);
-        font-size: 1.125rem;
-        font-weight: 500;
-        padding: 0.5rem 1.5rem;
-    }
-    .signup .footer {
-        opacity: 0.7;
-        font-size: 0.875rem;
-        line-height: 1.75;
-    }
-    .cards {
-        display: grid;
+        justify-content: space-between;
+        flex-direction: start column;
         gap: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
-    .cards .card {
-        display: grid;
-        grid-template-columns: 3rem auto;
-        column-gap: 1.5rem;
-        row-gap: 0.5rem;
-        padding: 1.5rem;
-        background: var(--background);
-        border-radius: var(--border-radius);
+    .copyright {
+        font-size: 0.75rem;
+        color: var(--color-text-secondary, #2d3339);
     }
-    .cards .card .icon {
-        color: var(--color-brand);
-        padding: 0.25rem;
-        font-size: 3rem;
-        grid-row: span 2;
-    }
-    .cards .card .title {
+    .by {
         font-weight: 600;
-        font-size: 1.125rem;
-        line-height: 1.5;
+        font-size: 0.75rem;
     }
-    .cards .card .description {
-        opacity: 0.7;
-        font-size: 1rem;
+    ul {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 1.5rem;
+        list-style: none;
+    }
+    ul a {
+        transition: var(--transition);
+    }
+    ul a:hover {
+        color: var(--color-accent);
+    }
+    @media (min-width: 600px) {
+        ul {
+            font-size: 1.25rem;
+        }
     }
 </style>
