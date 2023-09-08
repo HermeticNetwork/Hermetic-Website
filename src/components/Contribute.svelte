@@ -1,13 +1,20 @@
 <script>
     export let superhead = "Formas de contribuir";
-    export let heading = "Atualmente estamos em fase de desenvolviemento, portanto a maior parte de contribuição está nesse campo, mas...";
+    export let heading = "Estamos atualmente na fase de desenvolvimento, o que significa que a maior parte das contribuições necessárias está concentrada nesse campo. No entanto...";
     export let content = {
-        html: `Se mesmo assim você estiver interesse em contribuir, saiba que você pode! <br /><br />
-            <b> Estamos atrás de TODO tipo de ajuda, veja alguns exemplos: </b> <br /><br />
-            Se você for Designer pode ajudar estabelecer uma identidade visual e uma verdadeira face para a moeda HERM. <br /><br />
-            Se você é um Advogado Fiscal pode ajudar com estratégias para oferecer as empresas a doação ao fundo como forma de benefício fiscal. <br /><br />
-            Ou seja, se encaixe e contribua conforme você puder. <br /><br />
-            Entre no nosso <a href="https://discord.gg/UzFGhQ6q">Discord</a>.
+        html: `Se você estiver interessado em contribuir, <b>saiba que sua ajuda é muito bem-vinda!</b> <br />
+<br />
+Estamos buscando assistência de todos os tipos e temos alguns exemplos: <br />
+<br />
+Se você é um designer, pode ajudar a criar uma identidade visual única para a moeda HERM. <br />
+<br />
+Se você é um advogado fiscal, pode oferecer estratégias para empresas doarem ao fundo, aproveitando benefícios fiscais. <br />
+<br />
+Se você é bom em inglês, pode ajudar a traduzir a página. <br />
+<br />
+Em resumo, contribua como puder e se encaixar conforme sua disponbilidade.
+<br />
+Entre no nosso <a href="https://discord.gg/UzFGhQ6q">Discord</a>.
         `
     };
 </script>
