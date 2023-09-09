@@ -11,7 +11,7 @@
         },
         {
             link: {
-                url: "https://www.reddit.com/r/hermetic_network/",
+                url: "https://discord.gg/UzFGhQ6q",
                 label: "Discord",
             },
             icon: "mdi:discord",
