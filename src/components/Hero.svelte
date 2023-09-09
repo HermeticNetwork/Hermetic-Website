@@ -4,7 +4,7 @@
     export let title = "Hermetic Network";
     export let heading = "Semeie o bem";
     export let subheading = "Nós acreditamos no poder da tecnologia para criar um mundo muito melhor.";
-    export let text = "A Rede Hermetic não se trata apenas de transações, mas sim de um movimento global para gerar impacto social positivo.";
+    export let text = "A Rede Hermetic não se trata apenas de transações, mas sim de um movimento global para gerar impacto social positivo, se trata de uma Comunidade.";
 
     export let link = {
         label: "Desejo Começar Agora!",

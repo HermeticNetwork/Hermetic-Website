@@ -2,7 +2,7 @@
     import Icon from "@iconify/svelte/dist/Icon.svelte";
 
     export let superhead = "Ecossistema";
-    export let heading = "Ganhe HERMs em troca do bem.";
+    export let heading = "Ganhe Herms em troca do bem.";
     export let subhead = "";
 
     export let icon_list = [
@@ -39,7 +39,7 @@
             icon: "material-symbols:payments-outline",
             title: "Transações e Taxas",
             content: {
-                html: "Toda vez que uma transferência é realizada entre indivíduos (incluindo retiradas) 50% das HERMs são queimadas como forma de taxa.",
+                html: "Toda vez que uma transferência é realizada entre indivíduos (incluindo retiradas) 50% das Herms são queimadas como forma de taxa.",
             },
             link: {
                 label: "",
@@ -51,7 +51,7 @@
             icon: "material-symbols:attach-money",
             title: "Prova de Generosidade",
             content: {
-                html: "A cada ação benevolente aprovada pelo ecossistema, o responsável ganha HERMs como recompensa.",
+                html: "A cada ação benevolente aprovada pelo ecossistema, o responsável ganha Herms como recompensa.",
             },
             link: {
                 label: "Ajude a evoluir o Conceito!",

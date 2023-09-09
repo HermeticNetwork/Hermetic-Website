@@ -7,9 +7,9 @@
 
     export let teasers = [
         {
-            title: "Hermetic (HERM)",
+            title: "Herm (Token)",
             content: {
-                html: "HERM (Hermetic Token) adota um Padrão de Token do Ethereum chamado ERC-20. <br /><br /> Ele é o ativo bonificado para todos os usuários elegíveis atráves do Karma e pode ser transferido para outras carteiras (não recomendado) como MetaTask, por exemplo."
+                html: "O Herm, cujo símbolo é H (i.g, 0.01H ou 10H), adota o Padrão de Token do Ethereum chamado ERC-20. <br /><br /> Ele é o ativo bonificado para todos os usuários elegíveis atráves do Karma e pode ser transferido para outras carteiras (não recomendado) como MetaTask, por exemplo."
             },
             image: {
                 url: "./images/hermetic-token.png",
@@ -39,7 +39,7 @@
         {
             title: "Hermetic Wallet (Client)",
             content: {
-                html: "Apesar do nome, as Wallets não possuem de fato suas HERMs, ela possuí o acesso as suas moedas diretamente no Blockchain, te dando total acesso para gerenciar-las efetuando transações. A Hermertic Wallet conta além disso, com a parte de Cliente para o Karma API, que é usado para validar a o pagamento de novas HERMs através da Prova de Generosidade."
+                html: "Apesar do nome, as Wallets não possuem de fato suas Herms, ela possuí o acesso as suas moedas diretamente no Blockchain, te dando total acesso para gerenciar-las efetuando transações. A Hermertic Wallet conta além disso, com a parte de Cliente para o Karma API, que é usado para validar a o pagamento de novas Herms através da Prova de Generosidade."
             },
             image: {
                 url: "./images/hermetic-wallet.png",

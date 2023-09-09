@@ -14,7 +14,7 @@
             icon: "mdi:heart",
             title: "100% Humanizado",
             description:
-                "A Rede Hermetic foi construída para impactar vidas de forma positiva, este é o principal motivo pelo qual o HERM existe.",
+                "A Rede Hermetic foi construída para impactar vidas de forma positiva, este é o principal motivo pelo qual o Herm existe.",
         },
         {
             icon: "material-symbols:lock",
