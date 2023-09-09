@@ -4,7 +4,14 @@
     export let social_links = [
         {
             link: {
-                url: "https://discord.gg/UzFGhQ6q",
+                url: "https://www.reddit.com/r/hermetic_network/",
+                label: "Reddit",
+            },
+            icon: "mdi:reddit",
+        },
+        {
+            link: {
+                url: "https://www.reddit.com/r/hermetic_network/",
                 label: "Discord",
             },
             icon: "mdi:discord",
