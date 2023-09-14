@@ -1,31 +1,10 @@
 <script>
     import Icon from "@iconify/svelte";
 
-    export let heading =
-        "Estamos avançando rapidamente, inscreva-se para atualizações e muito mais.";
-    export let form = {
-        placeholder: "johndoe@hermetic.co",
-        button_label: "Confirmar",
-        footer: "Enviaremos um e-mail toda vez que uma implementação relevante ocorrer.",
-    };
+    import { locale } from "../store/i18n";
+    import i18translation from "../translation";
 
-    export let cards = [
-        {
-            icon: "mdi:heart",
-            title: "100% Humanizado",
-            description:
-                "A Rede Hermetic foi construída para impactar vidas de forma positiva, este é o principal motivo pelo qual o Herm existe.",
-        },
-        {
-            icon: "material-symbols:lock",
-            title: "Rápido, Fácil e Seguro",
-            description:
-                "Projetado para ser leve e fácil de usar, a Rede Hermetic funciona em diversas camadas e integra diversas aplicações.",
-        },
-    ];
-
-    const noNewsletterAlert = () =>
-        alert("Oops! Nós não temos uma Newsletter ainda... Tente o Discord!");
+    $: t = i18translation[$locale]["Newsletter"];
 </script>
 
 <svg viewBox="0 0 1440 175" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,17 +18,17 @@
 <section>
     <div class="section-container">
         <div class="signup">
-            <h2 class="heading">{heading}</h2>
+            <h2 class="heading">{t.heading}</h2>
             <form action="">
-                <input type="email" placeholder={form.placeholder} />
-                <button type="button" on:click={noNewsletterAlert}
-                    >{form.button_label}</button
+                <input type="email" placeholder={t.form.placeholder} />
+                <button type="button" on:click={alert(t.newsletterAlert)}
+                    >{t.form.button_label}</button
                 >
             </form>
-            <span class="footer">{form.footer}</span>
+            <span class="footer">{t.form.footer}</span>
         </div>
         <div class="cards">
-            {#each cards as { icon, title, description }}
+            {#each t.cards as { icon, title, description }}
                 <div class="card">
                     <div class="icon">
                         <Icon {icon} />

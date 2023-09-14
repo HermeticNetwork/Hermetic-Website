@@ -11,13 +11,15 @@
     
     import "../style/global.css";
     import "../style/reset.css";
+
+    import { locale } from "../store/i18n";
 </script>
 
 <svelte:head>
 	<title>Hermetic Network - Proof of Generosity Concept</title>
 </svelte:head>
 
-<div id="page">
+<div id="page" class="{ $locale == 'ar-SA' ? 'ar' : 'lang' }">
     <Navigation />
     <Hero />
     <SectionCards />
@@ -28,3 +30,9 @@
     <Newsletter />
     <Footer />
 </div>
+
+<style>
+.ar {
+  direction: rtl;
+}
+</style>

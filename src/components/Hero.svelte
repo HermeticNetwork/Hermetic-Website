@@ -1,32 +1,27 @@
 <script>
     export let variation = "image_left";
 
-    export let title = "Hermetic Network";
-    export let heading = "Semeie o bem";
-    export let subheading = "Nós acreditamos no poder da tecnologia para criar um mundo muito melhor.";
-    export let text = "A Rede Hermetic não se trata apenas de transações, mas sim de um movimento global para gerar impacto social positivo, se trata de uma Comunidade.";
-
-    export let link = {
-        label: "Desejo Começar Agora!",
-        url: "/#ecosystem"
-    };
+    import { locale } from "../store/i18n";
+    import i18translation from "../translation";
 
     export let image = {
         url: "https://cdn.bitkeep.vip/u_b_1d31bf20-8111-11ed-889b-e7ba166a3f8a.png",
         alt: "Inside to Ethereum Network."
     }
+    
+    $: t = i18translation[$locale]["Hero"];
 </script>
 
 <section class:image-left={variation === "image_left"}>
     <div class="section-container">
         <div class="body">
-            <h1 class="title">{title}</h1>
+            <h1 class="title">{t.title}</h1>
 
-            <h2 class="headline">{heading}</h2>
-            <div class="subheading">{subheading}</div>
-            <div class="subtext">{text}</div>
-            {#if link.label}
-                <a href={link.url} class="button">{link.label}</a>
+            <h2 class="headline">{t.heading}</h2>
+            <div class="subheading">{t.subheading}</div>
+            <div class="subtext">{t.text}</div>
+            {#if t.link.label}
+                <a href={t.link.url} class="button">{t.link.label}</a>
             {/if}
         </div>
         <figure>

@@ -1,60 +1,72 @@
 <script>
-    import { fade } from "svelte/transition";
-    import Icon from "@iconify/svelte";
+    import { Br, Es, Us, Icon, Cn, Sa } from "svelte-flag-icons";
 
-    let mobileNavOpen = false;
+    import { locale } from "../store/i18n";
+    import i18translation from "../translation";
+
+    import { fade, fly, slide } from "svelte/transition";
+    import Iconify from "@iconify/svelte";
+    import { onMount } from "svelte";
+
+    onMount(() => {
+        if (typeof navigator !== "undefined") {
+            const userPreferredLanguage = navigator?.languages
+                ? navigator?.languages[0]
+                : navigator?.language;
+
+            locale.set(userPreferredLanguage);
+        }
+    });
+
+    export let mobileNavOpen = false;
+
+    export let logo = {
+        image: {
+            url: "https://xvseyspspntcaaxgkfgn.supabase.co/storage/v1/object/public/images/ea511b85-17be-41f4-ace4-1fd410e1a53f/1694049322774Hermetic%20Coin.png",
+            alt: "Etic Coin",
+        },
+    };
+
+    export let exibithLanguages = false;
+
+    const switchExhibitLanguage = () => {
+        exibithLanguages = !exibithLanguages;
+        mobileNavOpen = false;
+    }
 
     function toggleMobileNav() {
         mobileNavOpen = !mobileNavOpen;
     }
 
-    export let logo = {
-        image: {
-            url: "https://xvseyspspntcaaxgkfgn.supabase.co/storage/v1/object/public/images/ea511b85-17be-41f4-ace4-1fd410e1a53f/1694049322774Hermetic%20Coin.png",
-            alt: "HERM",
-        },
-    };
-
-    export let navs = [
+    const langs = [
         {
-            link: {
-                url: "#ecosystem",
-                label: "Ecossistema",
-            },
+            key: "en",
+            value: "en-US",
+            component: Us,
         },
         {
-            link: {
-                url: "#operation",
-                label: "Funcionamento",
-            },
+            key: "es",
+            value: "es-ES",
+            component: Es,
         },
         {
-            link: {
-                url: "#contribution",
-                label: "Contribuições",
-            },
+            key: "pt",
+            value: "pt-BR",
+            component: Br,
         },
         {
-            link: {
-                url: "#articles",
-                label: "Artigos e Incentivos",
-            },
+            key: "zh",
+            value: "zh-CN",
+            component: Cn,
         },
         {
-            link: {
-                url: "https://discord.gg/UzFGhQ6q",
-                label: "Participe",
-                target: "_blank"
-            },
-        },
-        {
-            link: {
-                url: "https://github.com/orgs/HermeticNetwork/repositories",
-                label: "Repositórios",
-                target: "_blank"
-            },
+            key: "ar",
+            value: "ar-SA",
+            component: Sa,
         },
     ];
+
+    $: t = i18translation[$locale]["Navigation"];
 </script>
 
 <header class="section-container">
@@ -63,14 +75,46 @@
             <img class="coin" src={logo.image.url} alt={logo.image.alt} />
         </a>
         <nav>
-            {#each navs as { link }}
+            {#each t.navs as { link }}
                 {#if link?.target}
-                    <a class="link" href={link.url} target={link.target}>{link.label}</a>
+                    <a class="link" href={link.url} target={link.target}
+                        >{link.label}</a
+                    >
                 {:else}
                     <a class="link" href={link.url}>{link.label}</a>
                 {/if}
             {/each}
         </nav>
+
+        <div class="flags">
+            {#each langs as lang}
+                {#if $locale.includes(lang.key)}
+                    <button
+                        class="language"
+                        on:click={() => switchExhibitLanguage()}
+                    >
+                        <Icon size={22} icon={lang.component} />
+                    </button>
+                {/if}
+            {/each}
+        </div>
+
+        {#if exibithLanguages}
+            <div class="drop-flag" transition:fly={{ y: -10, duration: 500 }}>
+                <div class="arrow-up" />
+                {#each langs as lang}
+                    <button
+                        class="language"
+                        on:click={() => {
+                            locale.set(lang.value);
+                            switchExhibitLanguage();
+                        }}
+                    >
+                        <Icon size={20} icon={lang.component} />
+                    </button>
+                {/each}
+            </div>
+        {/if}
     </div>
     <div class="mobile-nav">
         <a href="/" class="logo">
@@ -78,23 +122,38 @@
         </a>
         <button
             id="open"
-            on:click={() => (mobileNavOpen = true)}
+            on:click={() => toggleMobileNav()}
             aria-label="Open mobile navigation"
         >
-            <Icon height="30" icon="eva:menu-outline" />
+            <Iconify height="30" icon="eva:menu-outline" />
         </button>
         {#if mobileNavOpen}
             <nav id="popup" transition:fade={{ duration: 200 }}>
-                {#each navs as { link }}
-                    <a href={link.url}>{link.label}</a>
+                {#each t.navs as { link }}
+                    <a href={link.url} on:click={() => toggleMobileNav()}>{link.label}</a>
                 {/each}
                 <button
-                    on:click={() => (mobileNavOpen = false)}
+                    on:click={() => toggleMobileNav()}
                     id="close"
                     aria-label="Close Navigation"
                 >
-                    <Icon height="25" icon="bi:x-lg" />
+                    <Iconify height="25" icon="bi:x-lg" />
                 </button>
+
+                <div class="flags mobile">
+                    {#each langs as lang}
+                        <button
+                            class="language {$locale.includes(lang.key) &&
+                                'active'}"
+                            on:click={() => {
+                                locale.set(lang.value);
+                                switchExhibitLanguage();
+                            }}
+                        >
+                            <Icon icon={lang.component} />
+                        </button>
+                    {/each}
+                </div>
             </nav>
         {/if}
     </div>
@@ -111,8 +170,8 @@
 
         position: sticky;
         top: 0;
-        background-color: rgba(255, 255, 255, .95);
-        border-radius: 0 0 .75rem .75rem;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 0 0 0.75rem 0.75rem;
 
         z-index: 999;
     }
@@ -165,6 +224,7 @@
             display: none;
         }
     }
+
     /* Mobile navigation popup */
     #popup {
         font-size: 1.25rem;
@@ -184,5 +244,52 @@
         position: absolute;
         right: 1rem;
         top: 1rem;
+    }
+
+    .flags {
+        display: flex;
+        width: 20px;
+        overflow: visible;
+        gap: 0.5rem;
+        border: 5px;
+        cursor: pointer;
+        outline: none;
+    }
+    .flags .language {
+        padding: 0.15rem 0.315rem;
+        border-radius: 2px;
+        background-color: rgb(245, 245, 245);
+    }
+    .flags.mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        margin-top: .5rem;
+    }
+    .drop-flag {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.05rem 0.35rem;
+        background-color: #bbafaaff;
+        padding: 0.15rem 0.3rem;
+        border-radius: 3px;
+        position: absolute;
+        right: 18px;
+        top: 4.5rem;
+        border: 2px solid white;
+    }
+    .drop-flag * {
+        cursor: pointer;
+    }
+    .arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #bbafaaff;
+        position: absolute;
+        top: -8px;
+        right: 8px;
     }
 </style>
