@@ -271,7 +271,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 0.05rem 0.35rem;
-        background-color: rgb(240, 240, 240;
+        background-color: rgb(240, 240, 240);
         padding: 0.15rem 0.3rem;
         border-radius: 3px;
         position: absolute;
@@ -287,7 +287,7 @@
         height: 0;
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
-        border-bottom: 8px solid rgb(240, 240, 240;
+        border-bottom: 8px solid rgb(240, 240, 240);
         position: absolute;
         top: -7px;
         right: 8px;
