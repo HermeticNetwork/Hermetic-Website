@@ -1,6 +1,23 @@
 <script>
+    import { Br, Es, Us, Icon } from "svelte-flag-icons";
+
+    import { locales, locale } from "../store/i18n";
+    import i18translation from "../translation";
+
     import { fade } from "svelte/transition";
-    import Icon from "@iconify/svelte";
+    import Iconify from "@iconify/svelte";
+    import { onMount } from "svelte";
+
+    onMount(() => {
+        // Verifique se o objeto navigator está definido antes de acessá-lo
+        if (typeof navigator !== "undefined") {
+            const userPreferredLanguage = navigator?.languages
+                ? navigator?.languages[0]
+                : navigator?.language;
+
+            locale.set(userPreferredLanguage);
+        }
+    });
 
     let mobileNavOpen = false;
 
@@ -11,50 +28,29 @@
     export let logo = {
         image: {
             url: "https://xvseyspspntcaaxgkfgn.supabase.co/storage/v1/object/public/images/ea511b85-17be-41f4-ace4-1fd410e1a53f/1694049322774Hermetic%20Coin.png",
-            alt: "HERM",
+            alt: "Etic Coin",
         },
     };
 
-    export let navs = [
+    const langs = [
         {
-            link: {
-                url: "#ecosystem",
-                label: "Ecossistema",
-            },
+            key: "en",
+            value: "en-US",
+            component: Us,
         },
         {
-            link: {
-                url: "#operation",
-                label: "Funcionamento",
-            },
+            key: "pt",
+            value: "pt-BR",
+            component: Br,
         },
         {
-            link: {
-                url: "#contribution",
-                label: "Contribuições",
-            },
-        },
-        {
-            link: {
-                url: "#articles",
-                label: "Artigos e Incentivos",
-            },
-        },
-        {
-            link: {
-                url: "https://discord.gg/UzFGhQ6q",
-                label: "Participe",
-                target: "_blank"
-            },
-        },
-        {
-            link: {
-                url: "https://github.com/orgs/HermeticNetwork/repositories",
-                label: "Repositórios",
-                target: "_blank"
-            },
+            key: "es",
+            value: "es-ES",
+            component: Es,
         },
     ];
+
+    $: t = i18translation[$locale]["Navigation"];
 </script>
 
 <header class="section-container">
@@ -63,14 +59,27 @@
             <img class="coin" src={logo.image.url} alt={logo.image.alt} />
         </a>
         <nav>
-            {#each navs as { link }}
+            {#each t.navs as { link }}
                 {#if link?.target}
-                    <a class="link" href={link.url} target={link.target}>{link.label}</a>
+                    <a class="link" href={link.url} target={link.target}
+                        >{link.label}</a
+                    >
                 {:else}
                     <a class="link" href={link.url}>{link.label}</a>
                 {/if}
             {/each}
         </nav>
+
+        <div class="flags">
+            {#each langs as lang}
+                <div
+                    class="language {$locale.includes(lang.key) && 'active'}"
+                    on:click={() => locale.set(lang.value)}
+                >
+                    <Icon icon={lang.component} />
+                </div>
+            {/each}
+        </div>
     </div>
     <div class="mobile-nav">
         <a href="/" class="logo">
@@ -81,11 +90,11 @@
             on:click={() => (mobileNavOpen = true)}
             aria-label="Open mobile navigation"
         >
-            <Icon height="30" icon="eva:menu-outline" />
+            <Iconify height="30" icon="eva:menu-outline" />
         </button>
         {#if mobileNavOpen}
             <nav id="popup" transition:fade={{ duration: 200 }}>
-                {#each navs as { link }}
+                {#each t.navs as { link }}
                     <a href={link.url}>{link.label}</a>
                 {/each}
                 <button
@@ -93,8 +102,20 @@
                     id="close"
                     aria-label="Close Navigation"
                 >
-                    <Icon height="25" icon="bi:x-lg" />
+                    <Iconify height="25" icon="bi:x-lg" />
                 </button>
+
+                <div class="flags mobile">
+                    {#each langs as lang}
+                        <div
+                            class="language {$locale.includes(lang.key) &&
+                                'active'}"
+                            on:click={() => locale.set(lang.value)}
+                        >
+                            <Icon icon={lang.component} />
+                        </div>
+                    {/each}
+                </div>
             </nav>
         {/if}
     </div>
@@ -111,8 +132,8 @@
 
         position: sticky;
         top: 0;
-        background-color: rgba(255, 255, 255, .95);
-        border-radius: 0 0 .75rem .75rem;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 0 0 0.75rem 0.75rem;
 
         z-index: 999;
     }
@@ -184,5 +205,25 @@
         position: absolute;
         right: 1rem;
         top: 1rem;
+    }
+
+    .flags {
+        display: flex;
+        gap: 0.5rem;
+        border: 5px;
+        cursor: pointer;
+        outline: none;
+    }
+    .flags .language {
+        border: 0.25rem double rgb(240, 240, 240);
+        padding: 0rem 0.165rem;
+        border-radius: 2px;
+        background-color: rgb(250, 250, 250);
+    }
+    .flags .active {
+        border-color: rgb(110, 102, 101);
+    }
+    .flags.mobile {
+        margin: 0.75rem auto;
     }
 </style>

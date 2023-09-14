@@ -1,84 +1,14 @@
 <script>
-    export let heading = "Artigos e Incentivos";
-    export let items = [
-        {
-            link: {
-                url: "https://livecoins.com.br/pesquisa-mostra-aumento-de-doacoes-com-criptomoedas/",
-                label: "Pesquisa mostra aumento de doações com criptomoedas",
-            },
-            description: {
-                html: "Segundo pesquisa do braço de filantropia da Binance, 32% dos entrevistados indicam criptomoedas como seu método preferido de doação.",
-            },
-            author: {
-                url: "https://livecoins.com.br/",
-                label: "Livecoins.com.br",
-            },
-            thumbnail: {
-                url: "https://livecoins.com.br/wp-content/uploads/2022/03/doacao-bitcoin-696x385.jpg.webp",
-                alt: "Empresário dando Bitcoin para outra pessoa; Doações de criptomoedas e Bitcoin.",
-            }
-        },
-        
-        {
-            link: {
-                url: "https://br.cointelegraph.com/news/crypto-donations-to-surpass-10b-in-a-decade-the-giving-block",
-                label: "Doações cripto ultrapassarão US$ 10 bilhões em uma década: The Giving Block",
-            },
-            description: {
-                html: "The Giving Block informou que o USDC foi responsável por 44% do volume de doações de cripto em sua plataforma no ano passado, seguido por ETH (24%) e BTC (17%).",
-            },
-            author: {
-                url: "https://br.cointelegraph.com/",
-                label: "Cointelegraph.com",
-            },
-            thumbnail: {
-                url: "https://images.cointelegraph.com/images/740_aHR0cHM6Ly9pbWFnZXMuY29pbnRlbGVncmFwaC5jb20vaW1hZ2VzLzE0MzRfYUhSMGNITTZMeTl6TXk1amIybHVkR1ZzWldkeVlYQm9MbU52YlM5emRHOXlZV2RsTDNWd2JHOWhaSE12ZG1sbGR5ODRPV1UwTW1JMlpXRmpaRGhoWkdSa056bGxaVFV5TTJGaU5EUTBOVEUwTlM1cWNHYz0uanBn.jpg",
-                alt: "Doações cripto ultrapassarão US$ 10 bilhões em uma década: The Giving Block.",
-            }
-        },
+    import { locale } from "../store/i18n";
+    import i18translation from "../translation";
 
-        {
-            link: {
-                url: "https://livecoins.com.br/greenpeace-lanca-campanha-contra-mineracao-de-bitcoin/",
-                label: "Greenpeace lança campanha contra mineração de Bitcoin",
-            },
-            description: {
-                html: "Até o momento, o destaque é a participação de Chris Larsen, cofundador e diretor-executivo da Ripple (XRP). Segundo a Bloomberg, o bilionário já doou 5 milhões de dólares (R$ 24 milhões) para a campanha.",
-            },
-            author: {
-                url: "https://livecoins.com.br/",
-                label: "Livecoins.com.br",
-            },
-            thumbnail: {
-                url: "https://livecoins.com.br/wp-content/uploads/2022/03/bitcoin-ambiental-696x385.jpg.webp",
-                alt: "Bitcoin em meio à natureza.",
-            }
-        },
-        
-        {
-            link: {
-                url: "https://br.cointelegraph.com/news/defi-daos-and-nfts-crypto-is-redefining-how-charities-raise-funds",
-                label: "DeFi, DAOs e NFTs: Criptomoedas estão redefinindo modelos de financiamento de instituições de caridade",
-            },
-            description: {
-                html: "As doações em criptomoedas vão muito além do que apenas transações peer-to-peer de Bitcoin e Ether.",
-            },
-            author: {
-                url: "https://br.cointelegraph.com/",
-                label: "Cointelegraph.com",
-            },
-            thumbnail: {
-                url: "https://images.cointelegraph.com/images/1434_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjMtMDEvMmQ1ZTE4NzItNWRkZi00YTE4LWE2NGUtODJiZjNlYmFhNWFhLkpQRw==.jpg",
-                alt: "DDeFi, DAOs e NFTs: Criptomoedas estão redefinindo modelos de financiamento de instituições de caridade.",
-            }
-        },
-    ];
+    $: t = i18translation[$locale]["Articles"];
 </script>
 
 <section class="section-container">
-    <h2>{heading}</h2>
+    <h2>{t.heading}</h2>
     <ul class="items">
-        {#each items as item, i}
+        {#each t.items as item, i}
             <li>
                 <div class="post-info">
                     <a class="title" href={item.link.url} target="_blank"
@@ -88,7 +18,9 @@
                         {@html item.description.html}
                     </div>
                     <span class="author">
-                        por <a href={item.author.url} target="_blank">{item.author.label}</a>
+                        {t.by} <a href={item.author.url} target="_blank">
+                            {item.author.label}
+                        </a>
                     </span>
                 </div>
                 {#if item.thumbnail.url}
@@ -160,7 +92,7 @@
             grid-template-columns: 3fr 1fr;
             gap: 3rem;
         }
-        
+
         .section-container {
             padding: 5rem 0rem;
         }

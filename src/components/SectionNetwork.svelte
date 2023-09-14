@@ -1,81 +1,20 @@
 <script>
     import Icon from "@iconify/svelte/dist/Icon.svelte";
 
-    export let superhead = "Rede Hermetic";
-    export let heading = "Abra o Capô";
-    export let subheading = "Descubra agora mesmo como as coisas funcionam de forma totalmente transparente e confiável.";
+    import { locale } from "../store/i18n";
+    import i18translation from "../translation";
 
-    export let teasers = [
-        {
-            title: "Herm (Token)",
-            content: {
-                html: "O Herm, cujo símbolo é H (i.g, 0.01H ou 10H), adota o Padrão de Token do Ethereum chamado ERC-20. <br /><br /> Ele é o ativo bonificado para todos os usuários elegíveis atráves do Karma e pode ser transferido para outras carteiras (não recomendado) como MetaTask, por exemplo."
-            },
-            image: {
-                url: "./images/hermetic-token.png",
-                alt: "Block Chain"
-            },
-            link: {
-                url: "https://github.com/HermeticNetwork/Hermetic-Token",
-                label: "Veja o fonte"
-            }
-        },
-        
-        {
-            title: "Karma (API)",
-            content: {
-                html: "Karma é a aplicação responsável por criar, validar e armazenar as informações dos votos de uma forma descentralizada através da tecnologia de Block Latter. <br /><br /> E usa o Lightning-Peer-Network (para P2P) afim de evitar a centralização das informações e para garantir a transparência da Rede Hermetic."
-            },
-            image: {
-                url: "./images/karma-api.png",
-                alt: "Scales of Justice"
-            },
-            link: {
-                url: "https://github.com/HermeticNetwork/Karma-API",
-                label: "Veja o fonte"
-            }
-        },
-        
-        {
-            title: "Hermetic Wallet (Client)",
-            content: {
-                html: "Apesar do nome, as Wallets não possuem de fato suas Herms, ela possuí o acesso as suas moedas diretamente no Blockchain, te dando total acesso para gerenciar-las efetuando transações. A Hermertic Wallet conta além disso, com a parte de Cliente para o Karma API, que é usado para validar a o pagamento de novas Herms através da Prova de Generosidade."
-            },
-            image: {
-                url: "./images/hermetic-wallet.png",
-                alt: "Hermetic Wallet"
-            },
-            link: {
-                url: "https://github.com/HermeticNetwork/Hermetic-Wallet",
-                label: "Veja o fonte"
-            }
-        },
-        
-        {
-            title: "Peer to Peer (Library)",
-            content: {
-                html: "Linghtning Peer Network é uma biblioteca mantida pelo Hermetic Network para conexões em pares, ela é usada no Karma API e é usada para garantir a descentralização dos blocos de votação da Block Latter."
-            },
-            image: {
-                url: "./images/peer-network.png",
-                alt: "Peer Network"
-            },
-            link: {
-                url: "https://github.com/HermeticNetwork/lightning-peer-network",
-                label: "Veja o fonte"
-            }
-        }
-    ]
+    $: t = i18translation[$locale]["Network"];
 </script>
 
 <section class="section-container">
     <header class="heading-group">
-        <span class="superhead">{superhead}</span>
-        <h2 class="heading">{heading}</h2>
-        <div class="subheading">{subheading}</div>
+        <span class="superhead">{t.superhead}</span>
+        <h2 class="heading">{t.heading}</h2>
+        <div class="subheading">{t.subheading}</div>
     </header>
     <div class="teasers">
-        {#each teasers as teaser}
+        {#each t.teasers as teaser}
             <div class="teaser">
                 {#if teaser.image.url}
                     <img src={teaser.image.url} alt={teaser.image.alt} />
@@ -95,7 +34,7 @@
             </div>
         {/each}
     </div>
-    
+
     <div id="contribution" />
 </section>
 

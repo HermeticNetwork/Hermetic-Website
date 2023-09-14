@@ -118,3 +118,7 @@ html {
 .link:hover .arrow {
 	transform: translateX(4px);
 }
+
+path, path:active, svg {
+	outline: none !important;
+}
